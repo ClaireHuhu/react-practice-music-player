@@ -4,6 +4,7 @@
   "description": "",
   "main": "app/index.js",
   "scripts": {
+    "start": "node server.js",
     "build": "webpack"
   },
   "author": "",

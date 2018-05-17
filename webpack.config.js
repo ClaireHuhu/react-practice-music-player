@@ -1,9 +1,20 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+
 module.exports = {
+	mode: 'development',
 	devtool: 'eval-source-map',
-	entry: './app/index.js',
+	entry: [
+		'webpack-dev-server/client?http://localhost:3000',
+		'webpack/hot/only-dev-server',
+		'react-hot-loader/path',
+		path.join(__dirname,'app/index.js')
+	],
 	output: {
-		path: __dirname + '/dist',
-		filename: 'bundle.js'
+		path: path.join(__dirname, '/dist'),
+		filename: '[name].js',
+		publicPath: '/'
 	},
 	module: {
 		rules: [
@@ -24,22 +35,7 @@ module.exports = {
 			}
 		},
 		{
-			test: /\.css$/,
-			use: [
-			{
-				loader: 'style-loader'
-			},
-			{
-				loader: 'css-loader',
-				options: {
-					modules: true,
-					localIdentName: '[name]__[local]__[hash:base64:5]'
-				}
-			}
-			]
-		},
-		{
-			test: /.less/,
+			test: /.less$/,
 			use: [
 			{
 				loader: 'style-loader'
@@ -57,5 +53,18 @@ module.exports = {
 			]
 		}
 		]
-	}
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: __dirname + '/app/index.tmpl.html',
+			inject: 'body',
+			filename: './index.html'
+		}),
+		new webpack.optimize.OccurrenceOrderPlugin(),
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoEmitOnErrorsPlugin(),
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify('development')
+		})
+	]
 }
