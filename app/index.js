@@ -1,10 +1,20 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import styles from './index.less';
-class Router extends React.Component {
-	render () {
-		return <div className={styles.test}><span>test</span></div>
-	}
-}
+import {
+    AppContainer
+} from 'react-hot-loader';
+import Root from './root';
 
-ReactDOM.render(<Router/>,document.getElementById('root'));
+ReactDOM.render(<AppContainer><Root/></AppContainer>, document.getElementById('root'));
+
+if (module.hot) {
+    module.hot.accept('./root', () => {
+        const NewRoot = require('./root').default;
+        ReactDOM.render(
+            <AppContainer>
+                <NewRoot />
+            </AppContainer>,
+            document.getElementById('root')
+        )
+    })
+}

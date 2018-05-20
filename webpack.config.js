@@ -8,51 +8,44 @@ module.exports = {
 	entry: [
 		'webpack-dev-server/client?http://localhost:3000',
 		'webpack/hot/only-dev-server',
-		'react-hot-loader/path',
-		path.join(__dirname,'app/index.js')
+		'react-hot-loader/patch',
+		path.join(__dirname, 'app/index.js')
 	],
 	output: {
-		path: path.join(__dirname, '/dist'),
+		path: path.join(__dirname, 'dist'),
 		filename: '[name].js',
 		publicPath: '/'
 	},
 	module: {
-		rules: [
-		{
+		rules: [{
 			test: /(\.js|\.jsx)$/,
 			use: {
 				loader: 'babel-loader',
 				options: {
-					presets: ['es2015', 'react']
+					presets: ['es2015', 'react'],
+					plugins: ['react-hot-loader/babel']
 				}
 			},
 			exclude: /node_modules/
-		},
-		{
+		}, {
 			test: /\.json?$/,
 			use: {
 				loader: 'json'
 			}
-		},
-		{
+		}, {
 			test: /.less$/,
-			use: [
-			{
+			use: [{
 				loader: 'style-loader'
-			},
-			{
+			}, {
 				loader: 'css-loader',
 				options: {
-					modules: true,
-					localIdentName: '[name]__[local]__[hash:base64:5]'
+					// modules: true,
+					// localIdentName: '[name]__[local]__[hash:base64:5]'
 				}
-			},
-			{
+			}, {
 				loader: 'less-loader'
-			}
-			]
-		}
-		]
+			}]
+		}]
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
