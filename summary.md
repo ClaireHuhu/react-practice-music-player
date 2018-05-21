@@ -12,7 +12,7 @@ webpack4之前cli是包含在webpack之中的，所以-g全局安装之后就可
 
 - react-hot-loader
 
-- 绝对路径 相对路径（url-loader）
+- 绝对路径 相对路径（url-loader）？
 
 - common.css?
 
@@ -23,4 +23,4 @@ render
 componentDidMount  
 componentWillUnmount  
 
-- 
+- 试试换react-jPlayer？
