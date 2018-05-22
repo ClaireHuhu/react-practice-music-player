@@ -1,5 +1,5 @@
 import React from "react";
-import './progress.less';
+import progress from './progress.less';
 
 class Progress extends React.Component {
     constructor() {
@@ -12,7 +12,7 @@ class Progress extends React.Component {
     }
     render() {
         return (
-            <div className='components-progress' onClick={this.handleClick} ref={(el)=>{this.progressBar=el;}}>
+            <div className={progress['components-progress']} onClick={this.handleClick} ref={(el)=>{this.progressBar=el;}}>
                 <div className='progress' style={{width:`${this.props.progress}%`}}></div>
             </div>
         )

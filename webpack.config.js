@@ -39,11 +39,19 @@ module.exports = {
 			}, {
 				loader: 'css-loader',
 				options: {
-					// modules: true,
-					// localIdentName: '[name]__[local]__[hash:base64:5]'
+					modules: true,
+					localIdentName: '[name]__[local]__[hash:base64:5]'
 				}
 			}, {
 				loader: 'less-loader'
+			}]
+		}, {
+			test: /.png$/,
+			use: [{
+				loader: 'url-loader',
+				options: {
+					limit: 1024
+				}
 			}]
 		}]
 	},
