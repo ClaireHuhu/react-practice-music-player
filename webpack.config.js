@@ -13,8 +13,7 @@ module.exports = {
 	],
 	output: {
 		path: path.join(__dirname, 'dist'),
-		filename: '[name].js',
-		publicPath: '/'
+		filename: '[name].js'
 	},
 	module: {
 		rules: [{
@@ -33,7 +32,7 @@ module.exports = {
 				loader: 'json'
 			}
 		}, {
-			test: /.less$/,
+			test: /\.less$/,
 			use: [{
 				loader: 'style-loader'
 			}, {
@@ -46,11 +45,18 @@ module.exports = {
 				loader: 'less-loader'
 			}]
 		}, {
-			test: /.png$/,
+			test: /\.css$/,
+			use: [{
+				loader: 'style-loader'
+			}, {
+				loader: 'css-loader'
+			}]
+		}, {
+			test: /\.png$/,
 			use: [{
 				loader: 'url-loader',
 				options: {
-					limit: 1024
+					limit: 8192
 				}
 			}]
 		}]
