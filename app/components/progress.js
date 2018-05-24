@@ -12,8 +12,8 @@ class Progress extends React.Component {
     }
     render() {
         return (
-            <div className={progress['components-progress']} onClick={this.handleClick} ref={(el)=>{this.progressBar=el;}}>
-                <div className={progress['progress']} style={{width:`${this.props.progress}%`,background:this.props.barColor}}></div>
+            <div className='components-progress' onClick={this.handleClick} ref={(el)=>{this.progressBar=el;}}>
+                <div className='progress' style={{width:`${this.props.progress}%`,background:this.props.barColor}}></div>
             </div>
         )
     }
