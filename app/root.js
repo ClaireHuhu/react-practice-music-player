@@ -3,6 +3,7 @@ import Header from './components/header';
 import Player from './page/player';
 import MusicList from './page/list';
 import { MUSIC_LIST } from './config/config.js';
+import { BrowserRouter , Route, Link, Redirect, Switch, Prompt, withRouter } from 'react-router-dom';
 
 class Root extends React.Component {
     constructor() {
@@ -26,13 +27,20 @@ class Root extends React.Component {
     }
     render() {
         return (
-            <div>
-                <Header/>
-                <MusicList list={this.state.list}/>
-                {/* <Player {...this.state.currentMusicItem}/>*/}
-            </div>
+            <BrowserRouter>
+                <div>
+                    <Header/>
+                    <Route path='/musicList' render={()=> <MusicList 
+                        list={this.state.list} 
+                        currentMusicItem={this.state.currentMusicItem}
+                        />}
+                    />
+                    <Route path='/player' render={()=><Player {...this.state.currentMusicItem}/>}/>
+                </div>
+            </BrowserRouter>
         )
     }
 }
 
 export default Root;
+
