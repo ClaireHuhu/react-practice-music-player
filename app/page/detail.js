@@ -8,7 +8,8 @@ class Detail extends React.Component {
 			<div className='detail-page'>
 				<img src={item.cover}/>
 				<div className='info-wrapper'>
-					<p>{item.title}</p>
+					<h3>{item.title}</h3>
+					<p>{item.artist}</p>
 				</div>
 			</div>
 			)

@@ -1,13 +1,15 @@
 import React from 'react';
 import style from './listitem.less';
 import { Link } from 'react-router-dom';
+import pubsub from 'pubsub-js';
 
 class ListItem extends React.Component {
 	playMusic (item) {
-
+		pubsub.publish('PLAY_MUSIC', item);
 	}
-	deleteHandler (item) {
-
+	deleteHandler (item, e) {
+		e.stopPropagation();
+		pubsub.publish('DELETE_MUSIC', item);
 	}
 	render () {
 		let item = this.props.item;

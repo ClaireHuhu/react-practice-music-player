@@ -24,7 +24,7 @@ https://www.jianshu.com/p/e80c468ddb32
 https://www.cnblogs.com/ghost-xyx/p/5812902.html   
 https://www.jianshu.com/p/3429cd456982
 
-- common.css?
+- common.css
 
 - 组件初次渲染生命周期：   
 constructor  
@@ -32,8 +32,6 @@ componentWillMount
 render  
 componentDidMount  
 componentWillUnmount  
-
-- 试试换react-jPlayer？
 
 - react中的this，事件处理函数中this，需要通过bind绑定，或者箭头函数处理。  
 作为props传入的函数，如果这个函数中用到了this，同样需要绑定处理。
@@ -44,4 +42,4 @@ componentWillUnmount
 
 - state传入子组件中，state改变，那么子组件也会自动更新渲染。如果state传入到子组件中，子组件用props来初始化state，那么在父组件state改变时，子组件并不会更新渲染，因为子组件的construcotor只在创建时调用，这种情况下需要componentWillReceiveProps 
 
-- postcss?
+- arr.indexOf(obj)
